@@ -47,7 +47,9 @@ def sri_css(path: str, *empty_tag_attrs: str, **extra_tag_attrs: str) -> str:
 
 def script_tag(path: str, *empty_tag_attrs: str, **extra_tag_attrs: str) -> str:
     extra_tag_attrs.setdefault("src", static(path))
-    return mark_safe(f"<script{format_attrs(*empty_tag_attrs, **extra_tag_attrs)}></script>")
+    return mark_safe(
+        f"<script{format_attrs(*empty_tag_attrs, **extra_tag_attrs)}></script>"
+    )
 
 
 def link_tag(path: str, *empty_tag_attrs: str, **extra_tag_attrs: str) -> str:
@@ -60,7 +62,10 @@ EXTENSIONS = {"js": sri_js, "css": sri_css}
 
 @register.simple_tag
 def sri_static(
-    path: str, *empty_tag_attrs: str, algorithm: str = DEFAULT_ALGORITHM.value, **extra_tag_attrs: str
+    path: str,
+    *empty_tag_attrs: str,
+    algorithm: str = DEFAULT_ALGORITHM.value,
+    **extra_tag_attrs: str,
 ) -> str:
     extension = os.path.splitext(path)[1][1:]
     sri_method = EXTENSIONS.get(extension, link_tag)
