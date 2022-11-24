@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pytest
 from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -8,8 +9,8 @@ from django.template.loader import render_to_string
 from django.test import override_settings
 
 import sri
-from sri.templatetags import sri as templatetags
 from sri.algorithm import DEFAULT_ALGORITHM
+from sri.templatetags import sri as templatetags
 
 TEST_FILES = ["index.css", "index.js", "admin/js/core.js"]
 

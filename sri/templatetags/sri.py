@@ -11,7 +11,6 @@ from django.utils.safestring import mark_safe
 from sri.algorithm import DEFAULT_ALGORITHM, Algorithm
 from sri.integrity import calculate_integrity_of_static
 
-
 USE_SRI = getattr(settings, "USE_SRI", not settings.DEBUG)
 
 register = template.Library()
